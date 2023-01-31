@@ -28,35 +28,28 @@ public class Order {
         String OrderTicket =  " Your Order : \n -----------------\n"
                 + "- Burger: "
                 + this.burger.getType()
-                + " $" + this.burger.getTotalPrice();
+                + " " + this.burger.getTotalPrice();
 
         List<ExtraToppings> extraToppings = this.burger.getExtraToppings();
         if (extraToppings.size() > 0)
         {
             OrderTicket += "\n\t- Extra: \n";
             for (ExtraToppings extraTopping: extraToppings) {
-                OrderTicket += "\t\t* ";
-                OrderTicket += extraTopping.getType()
-                        + " $"
-                        + extraTopping.getPrice();
-                OrderTicket+="\n";
+                OrderTicket = OrderTicket.concat("\t\t* ");
+                OrderTicket = OrderTicket.concat(extraTopping.getType());
+                OrderTicket = OrderTicket.concat("\n");
             }
         }
 
-        OrderTicket += "\n- Side item: "
-                + this.sideItem.getType()
-                + " $"
-                + this.sideItem.getPrice()
-                + "\n";
         OrderTicket += "- Drink: ";
-        OrderTicket += this.drink.getType()
+        OrderTicket = OrderTicket.concat(this.drink.getType()
                 + " "
                 + this.drink.getSize()
                 + " $"
                 + this.drink.getPrice()
-                + "\n";
+                + "\n");
 
-        OrderTicket += "Total : $" + this.totalPrice;
+        OrderTicket = OrderTicket.concat("Total : $" + this.totalPrice);
 
         return OrderTicket;
     }
