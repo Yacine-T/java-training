@@ -1,0 +1,45 @@
+import Grocecery.ShoppingList;
+
+import java.awt.*;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner operation = new Scanner(System.in);
+        Scanner items = new Scanner(System.in);
+        ShoppingList sh = new ShoppingList();
+        boolean isOperationOk = false;
+        while (!isOperationOk) {
+            Main.printAvailableOperations();
+            int op = operation.nextInt();
+
+            if (op == 0) {
+                isOperationOk = true;
+            } else if (op == 1) {
+                System.out.println("Enter the item(s) you want to add, please.");
+                sh.addItem(items.nextLine().trim());
+            } else if (op == 2) {
+                System.out.println("Enter the item(s) you want to remove, please.");
+                sh.removeItem(items.nextLine().trim());
+            } else {
+                System.out.println("Sorry, I haven't understand which operation you want to do.");
+            }
+            sh.sortList();
+            sh.printShoppingList();
+        }
+        System.out.println("You're exiting the app. Good bye !");
+        System.exit(0);
+    }
+
+    private static void printAvailableOperations() {
+        System.out.println("""
+                Available actions:
+                    0 - to shutdown
+                    1 - to add item(s) to list (comma delimited list)
+                    2 - to remove any items (comma delimited list)
+                Enter a number for which action you want to do:
+                """);
+    }
+}
