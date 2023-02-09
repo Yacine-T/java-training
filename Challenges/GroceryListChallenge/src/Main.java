@@ -1,7 +1,5 @@
 import Grocecery.ShoppingList;
 
-import java.awt.*;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -13,18 +11,23 @@ public class Main {
         boolean isOperationOk = false;
         while (!isOperationOk) {
             Main.printAvailableOperations();
-            int op = operation.nextInt();
+            char op = operation.next().charAt(0);
 
-            if (op == 0) {
-                isOperationOk = true;
-            } else if (op == 1) {
-                System.out.println("Enter the item(s) you want to add, please.");
-                sh.addItem(items.nextLine().trim());
-            } else if (op == 2) {
-                System.out.println("Enter the item(s) you want to remove, please.");
-                sh.removeItem(items.nextLine().trim());
-            } else {
-                System.out.println("Sorry, I haven't understand which operation you want to do.");
+            switch (Character.getNumericValue(op)) {
+                case 0 -> {
+                    isOperationOk = true;
+                }
+                case 1 -> {
+                    System.out.println("Enter the item(s) you want to add, please.");
+                    sh.addItem(items.nextLine());
+                }
+                case 2 -> {
+                    System.out.println("Enter the item(s) you want to remove, please.");
+                    sh.removeItem(items.nextLine());
+                }
+                default -> {
+                    System.out.println("Sorry, I haven't understand which operation you want to do.");
+                }
             }
             sh.sortList();
             sh.printShoppingList();
@@ -39,7 +42,6 @@ public class Main {
                     0 - to shutdown
                     1 - to add item(s) to list (comma delimited list)
                     2 - to remove any items (comma delimited list)
-                Enter a number for which action you want to do:
-                """);
+                Enter a number for which action you want to do:""" + " ");
     }
 }

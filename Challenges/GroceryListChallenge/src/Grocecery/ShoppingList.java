@@ -19,6 +19,7 @@ public class ShoppingList {
     public void addItem(String items){
         String[] itemsArray = items.split(",");
         for (String elt: itemsArray) {
+            elt = elt.trim().toLowerCase();
             if (!this.shoppingList.contains(elt))
                 this.shoppingList.add(elt);
         }
@@ -29,6 +30,7 @@ public class ShoppingList {
         if (!this.shoppingList.isEmpty())
         {
             for (String elt: itemsArray) {
+                elt = elt.trim().toLowerCase();
                 if (this.shoppingList.contains(elt))
                     this.shoppingList.remove(elt);
             }
