@@ -2,7 +2,6 @@ public abstract class ProductForSale {
     protected String type;
     private double price;
     private String description;
-
     public ProductForSale(String type, double price, String description){
         this.type = type;
         this.price = price;

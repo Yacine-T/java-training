@@ -22,14 +22,12 @@ public class Store {
 
         System.out.printf("%s %20s %10s%n", "Type", "Quantity", "Price");
         System.out.println("-".repeat(40));
-        double totalPrice = 0;
+        double totalPrice = 0.00;
         for (OrderItem orderItem : orderItemList){
             orderItem.getPfs().printPricedLineItem(orderItem.getQuantity());
-            totalPrice += orderItem.getPfs().getPrice();
+            totalPrice += orderItem.getPfs().getSalesPrice(orderItem.getQuantity());
         }
         System.out.println("-".repeat(40));
         System.out.printf("Total: %31s", "$" + String.format("%.2f", totalPrice));
     }
-
-
 }
