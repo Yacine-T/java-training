@@ -14,7 +14,7 @@ public abstract class ProductForSale {
     }
 
     public void printPricedLineItem(int quantity) {
-        System.out.printf("%s %3s x%d %5s $%.2f%n", this.type, "", quantity, "", this.getSalesPrice(quantity));
+        System.out.printf("%-20s x%-7s $%.2f%n", this.type, Integer.toString(quantity), this.getSalesPrice(quantity));
     }
 
     public abstract void showDetails();
